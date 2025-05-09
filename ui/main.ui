@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1025</width>
+    <height>685</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #424242;
+font: 600 9pt &quot;Noto Sans&quot;;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>951</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>3</number>
+    </property>
+    <widget class="QWidget" name="HomePage">
+     <widget class="QToolButton" name="toolButton">
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>40</y>
+        <width>141</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../res-rc.qrc">
+        <normaloff>:/newPrefix/icons/logo.webp</normaloff>:/newPrefix/icons/logo.webp</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>150</width>
+        <height>150</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>520</width>
+        <height>194</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTextEdit" name="textEdit">
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Приложение для сравнения урожайности различных сортов сельскохозяйственных культур при использовании различных типов удобрений&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_2">
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Выполнили студенты группы цис-33&lt;br /&gt;Смирнов М.А.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Блинов И.А.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Лешина Д.А.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="DataPage">
+     <widget class="QTableView" name="DataTable">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>921</width>
+        <height>491</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>436</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="LoadBtn">
+         <property name="text">
+          <string>Load Data</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../res-rc.qrc">
+           <normaloff>:/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="statusLabel">
+         <property name="text">
+          <string>Файл не выбран</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="SaveBtn">
+         <property name="text">
+          <string>Save Data</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../res-rc.qrc">
+           <normaloff>:/newPrefix/icons/download_done_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_done_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ExportBtn">
+         <property name="text">
+          <string>Export Results</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../res-rc.qrc">
+           <normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="AnalysisPage">
+     <widget class="QGroupBox" name="analysisGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>361</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Параметры анализа</string>
+      </property>
+      <widget class="QPushButton" name="runAnalysisBtn">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>250</y>
+         <width>149</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Запустить анализ</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="testTypeCombo">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>60</y>
+         <width>149</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>ANOVA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Tukey HSD</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>151</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QCheckBox" name="cropFactorCheck">
+          <property name="text">
+           <string>Сорт культуры</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="fertilizerCheck">
+          <property name="text">
+           <string>Тип удобрения</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="interactionCheck">
+          <property name="text">
+           <string>Взаимодействие</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QTextEdit" name="resultsText">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>60</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ChartsPage">
+     <widget class="QTabWidget" name="chartsTabs">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>861</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="mainChartTab">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>201</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QComboBox" name="chartTypeCombo">
+           <item>
+            <property name="text">
+             <string>columnar</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Spot</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>linear</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="showTrendCheck">
+           <property name="text">
+            <string>Show Trend</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="exportChartBtn">
+           <property name="text">
+            <string>Export graph</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../res-rc.qrc">
+             <normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="mainPlotContainer" native="true">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>20</y>
+          <width>521</width>
+          <height>331</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="comparisonTab">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>191</width>
+          <height>166</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Группировка</string>
+        </property>
+        <widget class="QRadioButton" name="radioButton">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>60</y>
+           <width>94</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>по сортам</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_2">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>90</y>
+           <width>94</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>по удобрениям</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="comparisonPlotContainer" native="true">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>20</y>
+          <width>521</width>
+          <height>331</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>345</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="HomeBtn">
+       <property name="text">
+        <string>Home</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../res-rc.qrc">
+         <normaloff>:/newPrefix/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="dataBtn">
+       <property name="text">
+        <string>data</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../res-rc.qrc">
+         <normaloff>:/newPrefix/icons/database_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/database_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="analysisBtn">
+       <property name="text">
+        <string>analysis</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../res-rc.qrc">
+         <normaloff>:/newPrefix/icons/experiment_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/experiment_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="chartsBtn">
+       <property name="text">
+        <string>charts</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../res-rc.qrc">
+         <normaloff>:/newPrefix/icons/bar_chart_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/bar_chart_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../res-rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
