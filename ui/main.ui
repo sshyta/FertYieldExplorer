@@ -28,7 +28,7 @@ font: 600 9pt &quot;Noto Sans&quot;;</string>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QToolButton" name="toolButton">
@@ -44,7 +44,7 @@ font: 600 9pt &quot;Noto Sans&quot;;</string>
        <string/>
       </property>
       <property name="icon">
-       <iconset resource="../res-rc.qrc">
+       <iconset resource="../res_rc.qrc">
         <normaloff>:/newPrefix/icons/logo.webp</normaloff>:/newPrefix/icons/logo.webp</iconset>
       </property>
       <property name="iconSize">
@@ -109,7 +109,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </rect>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -125,7 +125,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <string>Load Data</string>
          </property>
          <property name="icon">
-          <iconset resource="../res-rc.qrc">
+          <iconset resource="../res_rc.qrc">
            <normaloff>:/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
          </property>
          <property name="iconSize">
@@ -149,7 +149,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <string>Save Data</string>
          </property>
          <property name="icon">
-          <iconset resource="../res-rc.qrc">
+          <iconset resource="../res_rc.qrc">
            <normaloff>:/newPrefix/icons/download_done_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_done_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
          </property>
          <property name="iconSize">
@@ -166,7 +166,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <string>Export Results</string>
          </property>
          <property name="icon">
-          <iconset resource="../res-rc.qrc">
+          <iconset resource="../res_rc.qrc">
            <normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
          </property>
          <property name="iconSize">
@@ -226,7 +226,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
        </item>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -330,7 +330,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <string>Export graph</string>
            </property>
            <property name="icon">
-            <iconset resource="../res-rc.qrc">
+            <iconset resource="../res_rc.qrc">
              <normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
            </property>
            <property name="iconSize">
@@ -427,7 +427,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>Home</string>
        </property>
        <property name="icon">
-        <iconset resource="../res-rc.qrc">
+        <iconset resource="../res_rc.qrc">
          <normaloff>:/newPrefix/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -444,7 +444,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>data</string>
        </property>
        <property name="icon">
-        <iconset resource="../res-rc.qrc">
+        <iconset resource="../res_rc.qrc">
          <normaloff>:/newPrefix/icons/database_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/database_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -461,7 +461,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>analysis</string>
        </property>
        <property name="icon">
-        <iconset resource="../res-rc.qrc">
+        <iconset resource="../res_rc.qrc">
          <normaloff>:/newPrefix/icons/experiment_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/experiment_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -478,7 +478,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>charts</string>
        </property>
        <property name="icon">
-        <iconset resource="../res-rc.qrc">
+        <iconset resource="../res_rc.qrc">
          <normaloff>:/newPrefix/icons/bar_chart_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/bar_chart_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -494,7 +494,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   </widget>
  </widget>
  <resources>
-  <include location="../res-rc.qrc"/>
+  <include location="../res_rc.qrc"/>
  </resources>
  <connections/>
 </ui>
