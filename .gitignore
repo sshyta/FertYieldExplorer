@@ -1,3 +1,5 @@
+venv/
+
 ui/__pycache__
 
 views/__pycache__
