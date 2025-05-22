@@ -44,7 +44,7 @@ font: 600 9pt &quot;Noto Sans&quot;;</string>
        <string/>
       </property>
       <property name="icon">
-       <iconset resource="../res_rc.qrc">
+       <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
         <normaloff>:/newPrefix/icons/logo.webp</normaloff>:/newPrefix/icons/logo.webp</iconset>
       </property>
       <property name="iconSize">
@@ -125,7 +125,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <string>Load Data</string>
          </property>
          <property name="icon">
-          <iconset resource="../res_rc.qrc">
+          <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
            <normaloff>:/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
          </property>
          <property name="iconSize">
@@ -149,7 +149,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <string>Save Data</string>
          </property>
          <property name="icon">
-          <iconset resource="../res_rc.qrc">
+          <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
            <normaloff>:/newPrefix/icons/download_done_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_done_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
          </property>
          <property name="iconSize">
@@ -166,7 +166,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <string>Export Results</string>
          </property>
          <property name="icon">
-          <iconset resource="../res_rc.qrc">
+          <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
            <normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
          </property>
          <property name="iconSize">
@@ -184,8 +184,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QGroupBox" name="analysisGroupBox">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>40</y>
+        <x>30</x>
+        <y>30</y>
         <width>361</width>
         <height>321</height>
        </rect>
@@ -197,7 +197,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>250</y>
+         <y>160</y>
          <width>149</width>
          <height>25</height>
         </rect>
@@ -230,9 +230,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>40</y>
+         <y>60</y>
          <width>151</width>
-         <height>191</height>
+         <height>81</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -263,10 +263,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QTextEdit" name="resultsText">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>60</y>
-        <width>181</width>
-        <height>31</height>
+        <x>400</x>
+        <y>40</y>
+        <width>521</width>
+        <height>501</height>
        </rect>
       </property>
      </widget>
@@ -276,9 +276,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>60</y>
+        <y>50</y>
         <width>861</width>
-        <height>411</height>
+        <height>481</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -330,7 +330,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <string>Export graph</string>
            </property>
            <property name="icon">
-            <iconset resource="../res_rc.qrc">
+            <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
              <normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
            </property>
            <property name="iconSize">
@@ -348,8 +348,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <rect>
           <x>260</x>
           <y>20</y>
-          <width>521</width>
-          <height>331</height>
+          <width>571</width>
+          <height>421</height>
          </rect>
         </property>
        </widget>
@@ -402,8 +402,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <rect>
           <x>260</x>
           <y>20</y>
-          <width>521</width>
-          <height>331</height>
+          <width>571</width>
+          <height>421</height>
          </rect>
         </property>
        </widget>
@@ -427,7 +427,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>Home</string>
        </property>
        <property name="icon">
-        <iconset resource="../res_rc.qrc">
+        <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
          <normaloff>:/newPrefix/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -444,7 +444,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>data</string>
        </property>
        <property name="icon">
-        <iconset resource="../res_rc.qrc">
+        <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
          <normaloff>:/newPrefix/icons/database_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/database_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -461,7 +461,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>analysis</string>
        </property>
        <property name="icon">
-        <iconset resource="../res_rc.qrc">
+        <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
          <normaloff>:/newPrefix/icons/experiment_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/experiment_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -478,7 +478,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <string>charts</string>
        </property>
        <property name="icon">
-        <iconset resource="../res_rc.qrc">
+        <iconset resource="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc">
          <normaloff>:/newPrefix/icons/bar_chart_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</normaloff>:/newPrefix/icons/bar_chart_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg</iconset>
        </property>
        <property name="iconSize">
@@ -494,7 +494,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   </widget>
  </widget>
  <resources>
-  <include location="../res_rc.qrc"/>
+  <include location="X:/my_dok/FertYieldExplorer/ui/res_rc.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainLxydXd.ui'
+## Form generated from reading UI file 'main.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.0
 ##
@@ -21,7 +21,7 @@ from PyQt6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGroupBox,
     QTabWidget, QTableView, QTextEdit, QToolButton,
     QVBoxLayout, QWidget)
 
-import ui.res_rc as res_rc
+import ui.res_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -109,10 +109,10 @@ class Ui_MainWindow(object):
         self.AnalysisPage.setObjectName(u"AnalysisPage")
         self.analysisGroupBox = QGroupBox(self.AnalysisPage)
         self.analysisGroupBox.setObjectName(u"analysisGroupBox")
-        self.analysisGroupBox.setGeometry(QRect(50, 40, 361, 321))
+        self.analysisGroupBox.setGeometry(QRect(30, 30, 361, 321))
         self.runAnalysisBtn = QPushButton(self.analysisGroupBox)
         self.runAnalysisBtn.setObjectName(u"runAnalysisBtn")
-        self.runAnalysisBtn.setGeometry(QRect(30, 250, 149, 25))
+        self.runAnalysisBtn.setGeometry(QRect(30, 160, 149, 25))
         self.testTypeCombo = QComboBox(self.analysisGroupBox)
         self.testTypeCombo.addItem("")
         self.testTypeCombo.addItem("")
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         self.testTypeCombo.setGeometry(QRect(190, 60, 149, 25))
         self.layoutWidget2 = QWidget(self.analysisGroupBox)
         self.layoutWidget2.setObjectName(u"layoutWidget2")
-        self.layoutWidget2.setGeometry(QRect(30, 40, 151, 191))
+        self.layoutWidget2.setGeometry(QRect(30, 60, 151, 81))
         self.verticalLayout = QVBoxLayout(self.layoutWidget2)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -141,13 +141,13 @@ class Ui_MainWindow(object):
 
         self.resultsText = QTextEdit(self.AnalysisPage)
         self.resultsText.setObjectName(u"resultsText")
-        self.resultsText.setGeometry(QRect(470, 60, 181, 31))
+        self.resultsText.setGeometry(QRect(400, 40, 521, 501))
         self.stackedWidget.addWidget(self.AnalysisPage)
         self.ChartsPage = QWidget()
         self.ChartsPage.setObjectName(u"ChartsPage")
         self.chartsTabs = QTabWidget(self.ChartsPage)
         self.chartsTabs.setObjectName(u"chartsTabs")
-        self.chartsTabs.setGeometry(QRect(20, 60, 861, 411))
+        self.chartsTabs.setGeometry(QRect(20, 50, 861, 481))
         self.mainChartTab = QWidget()
         self.mainChartTab.setObjectName(u"mainChartTab")
         self.verticalLayoutWidget = QWidget(self.mainChartTab)
@@ -178,7 +178,7 @@ class Ui_MainWindow(object):
 
         self.mainPlotContainer = QWidget(self.mainChartTab)
         self.mainPlotContainer.setObjectName(u"mainPlotContainer")
-        self.mainPlotContainer.setGeometry(QRect(260, 20, 521, 331))
+        self.mainPlotContainer.setGeometry(QRect(260, 20, 571, 421))
         self.chartsTabs.addTab(self.mainChartTab, "")
         self.comparisonTab = QWidget()
         self.comparisonTab.setObjectName(u"comparisonTab")
@@ -193,7 +193,7 @@ class Ui_MainWindow(object):
         self.radioButton_2.setGeometry(QRect(20, 90, 94, 21))
         self.comparisonPlotContainer = QWidget(self.comparisonTab)
         self.comparisonPlotContainer.setObjectName(u"comparisonPlotContainer")
-        self.comparisonPlotContainer.setGeometry(QRect(260, 20, 521, 331))
+        self.comparisonPlotContainer.setGeometry(QRect(260, 20, 571, 421))
         self.chartsTabs.addTab(self.comparisonTab, "")
         self.stackedWidget.addWidget(self.ChartsPage)
         self.layoutWidget3 = QWidget(self.centralwidget)
