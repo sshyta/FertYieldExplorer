@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets
-from PyQt6.QtCore import QRect  # Добавлен правильный импорт QRect
+from PyQt6.QtCore import QRect
 from logic.charts import (
     update_main_chart, 
     update_comparison_chart, 
@@ -41,7 +41,7 @@ def setup_charts_page(window):
         
         # Контейнер для графика взаимодействия
         window.interactionPlotContainer = QtWidgets.QWidget(interaction_tab)
-        window.interactionPlotContainer.setGeometry(QRect(20, 20, 800, 400))  # Исправлено: используем QRect из QtCore
+        window.interactionPlotContainer.setGeometry(QRect(20, 20, 800, 400))
         
         # Настройка графика взаимодействия
         window.figure3 = Figure(figsize=(8, 4), dpi=100)
@@ -51,7 +51,7 @@ def setup_charts_page(window):
         
         # Кнопка для обновления графика взаимодействия
         window.updateInteractionBtn = QtWidgets.QPushButton("Обновить график", interaction_tab)
-        window.updateInteractionBtn.setGeometry(QRect(20, 430, 150, 30))  # Исправлено: используем QRect из QtCore
+        window.updateInteractionBtn.setGeometry(QRect(20, 430, 150, 30))
         
         # Добавление вкладки для тепловой карты
         heatmap_tab = QtWidgets.QWidget()
@@ -59,7 +59,7 @@ def setup_charts_page(window):
         
         # Контейнер для тепловой карты
         window.heatmapContainer = QtWidgets.QWidget(heatmap_tab)
-        window.heatmapContainer.setGeometry(QRect(20, 20, 800, 400))  # Исправлено: используем QRect из QtCore
+        window.heatmapContainer.setGeometry(QRect(20, 20, 800, 400))
         
         # Настройка тепловой карты
         window.figure4 = Figure(figsize=(8, 4), dpi=100)
@@ -69,7 +69,7 @@ def setup_charts_page(window):
         
         # Кнопка для обновления тепловой карты
         window.updateHeatmapBtn = QtWidgets.QPushButton("Обновить карту", heatmap_tab)
-        window.updateHeatmapBtn.setGeometry(QRect(20, 430, 150, 30))  # Исправлено: используем QRect из QtCore
+        window.updateHeatmapBtn.setGeometry(QRect(20, 430, 150, 30))
 
     def update_interaction():
         """Обновляет график взаимодействия"""
@@ -78,16 +78,8 @@ def setup_charts_page(window):
             return
         
         try:
-            # Создание графика взаимодействия
-            window.figure3.clear()
-            interaction_fig = create_interaction_plot(window.data)
-            
-            if interaction_fig:
-                # Копирование графика на canvas
-                for ax in interaction_fig.get_axes():
-                    window.figure3.add_axes(ax)
-                window.canvas3.draw()
-            else:
+            success = create_interaction_plot(window)
+            if not success:
                 window.show_error_message("Не удалось создать график взаимодействия")
         except Exception as e:
             window.show_error_message(f"Ошибка при создании графика взаимодействия: {str(e)}")
@@ -99,16 +91,8 @@ def setup_charts_page(window):
             return
         
         try:
-            # Создание тепловой карты
-            window.figure4.clear()
-            heatmap_fig = create_heatmap(window.data)
-            
-            if heatmap_fig:
-                # Копирование графика на canvas
-                for ax in heatmap_fig.get_axes():
-                    window.figure4.add_axes(ax)
-                window.canvas4.draw()
-            else:
+            success = create_heatmap(window)
+            if not success:
                 window.show_error_message("Не удалось создать тепловую карту")
         except Exception as e:
             window.show_error_message(f"Ошибка при создании тепловой карты: {str(e)}")
