@@ -55,20 +55,34 @@ def update_main_chart(window):
             ax.grid(axis='y', linestyle='--', alpha=0.7)
             
         elif chart_type == "Точечная":
-            # Создание точечного графика для каждого сорта
-            for i, crop in enumerate(sorted(data['Сорт'].unique())):
-                subset = data[data['Сорт'] == crop]
-                # Добавляем небольшой разброс по оси X для лучшей визуализации
-                x = np.arange(len(subset['Удобрение'].unique()))
-                ax.scatter(x, subset['Урожайность'], 
-                           label=crop, 
-                           alpha=0.7,
-                           s=80,
-                           edgecolor='black')
+            # Исправленная точечная диаграмма
+            fertilizers = sorted(data['Удобрение'].unique())
+            varieties = sorted(data['Сорт'].unique())
+            
+            # Создание числовых позиций для удобрений
+            fertilizer_positions = {fert: i for i, fert in enumerate(fertilizers)}
+            
+            # Построение точек для каждого сорта
+            for variety in varieties:
+                subset = data[data['Сорт'] == variety]
+                
+                # Получение позиций X и значений Y
+                x_positions = [fertilizer_positions[fert] for fert in subset['Удобрение']]
+                y_values = subset['Урожайность'].values
+                
+                # Добавление небольшого случайного смещения для лучшей видимости
+                x_jitter = np.random.normal(0, 0.05, len(x_positions))
+                x_final = np.array(x_positions) + x_jitter
+                
+                ax.scatter(x_final, y_values, 
+                          label=variety, 
+                          alpha=0.7,
+                          s=80,
+                          edgecolor='black')
             
             # Настройка оси X
-            ax.set_xticks(np.arange(len(data['Удобрение'].unique())))
-            ax.set_xticklabels(sorted(data['Удобрение'].unique()))
+            ax.set_xticks(range(len(fertilizers)))
+            ax.set_xticklabels(fertilizers)
             
             ax.set_title('Урожайность по сортам и удобрениям', fontsize=12, fontweight='bold')
             ax.set_xlabel('Тип удобрения', fontsize=10)
@@ -154,20 +168,19 @@ def update_comparison_chart(window):
     except Exception as e:
         window.show_error_message(f"Ошибка при построении графика сравнения: {str(e)}")
 
-def create_interaction_plot(data):
+def create_interaction_plot(window):
     """
-    Создает график взаимодействия между факторами.
+    Создает график взаимодействия между факторами прямо на canvas.
     
     Args:
-        data (DataFrame): Данные с колонками 'Сорт', 'Удобрение', 'Урожайность'
-        
-    Returns:
-        Figure: Объект Figure с графиком взаимодействия
+        window: Главное окно приложения с доступом к данным
     """
     try:
-        # Создание нового объекта Figure
-        fig = Figure(figsize=(10, 6), dpi=100)
-        ax = fig.add_subplot(111)
+        # Очищаем фигуру
+        window.figure3.clear()
+        ax = window.figure3.add_subplot(111)
+        
+        data = window.data
         
         # Группировка данных для графика взаимодействия
         interaction_data = data.groupby(['Сорт', 'Удобрение'])['Урожайность'].mean().reset_index()
@@ -178,7 +191,7 @@ def create_interaction_plot(data):
         # Построение графика взаимодействия
         for fertilizer in pivot_table.columns:
             ax.plot(pivot_table.index, pivot_table[fertilizer], 
-                   marker='o', label=fertilizer, linewidth=2)
+                   marker='o', label=fertilizer, linewidth=2, markersize=8)
         
         ax.set_title('График взаимодействия: Сорт × Удобрение', fontsize=14, fontweight='bold')
         ax.set_xlabel('Сорт', fontsize=12)
@@ -186,12 +199,75 @@ def create_interaction_plot(data):
         ax.grid(True, linestyle='--', alpha=0.7)
         ax.legend(title='Удобрение')
         
-        fig.tight_layout()
-        return fig
+        # Поворот меток по оси X для лучшей читаемости
+        plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
+        
+        window.figure3.tight_layout()
+        window.canvas3.draw()
+        
+        return True
     
     except Exception as e:
         print(f"Ошибка при создании графика взаимодействия: {str(e)}")
-        return None
+        return False
+
+def create_heatmap(window):
+    """
+    Создает тепловую карту прямо на canvas.
+    
+    Args:
+        window: Главное окно приложения с доступом к данным
+    """
+    try:
+        # Очищаем фигуру
+        window.figure4.clear()
+        ax = window.figure4.add_subplot(111)
+        
+        data = window.data
+        
+        # Создание сводной таблицы средней урожайности
+        pivot_table = data.pivot_table(
+            index='Сорт', 
+            columns='Удобрение', 
+            values='Урожайность',
+            aggfunc='mean'
+        )
+        
+        # Построение тепловой карты
+        im = ax.imshow(pivot_table.values, cmap='YlGnBu', aspect='auto')
+        
+        # Настройка осей
+        ax.set_xticks(np.arange(len(pivot_table.columns)))
+        ax.set_yticks(np.arange(len(pivot_table.index)))
+        ax.set_xticklabels(pivot_table.columns)
+        ax.set_yticklabels(pivot_table.index)
+        
+        # Поворот меток по оси X для лучшей читаемости
+        plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+        
+        # Добавление значений в ячейки
+        for i in range(len(pivot_table.index)):
+            for j in range(len(pivot_table.columns)):
+                value = pivot_table.iloc[i, j]
+                if not pd.isna(value):
+                    text_color = "white" if value < pivot_table.values.mean() else "black"
+                    ax.text(j, i, f"{value:.2f}", ha="center", va="center", 
+                           color=text_color, fontweight='bold')
+        
+        # Добавление цветовой шкалы
+        cbar = window.figure4.colorbar(im, ax=ax)
+        cbar.set_label('Средняя урожайность', fontsize=10)
+        
+        ax.set_title('Тепловая карта урожайности: Сорт × Удобрение', fontsize=14, fontweight='bold')
+        
+        window.figure4.tight_layout()
+        window.canvas4.draw()
+        
+        return True
+    
+    except Exception as e:
+        print(f"Ошибка при создании тепловой карты: {str(e)}")
+        return False
 
 def export_chart(window):
     """
@@ -203,12 +279,22 @@ def export_chart(window):
     from PyQt6.QtWidgets import QFileDialog
     
     # Определение текущего графика
-    if window.chartsTabs.currentIndex() == 0:
+    current_tab = window.chartsTabs.currentIndex()
+    if current_tab == 0:
         figure = window.figure1
         name = "main_chart"
-    else:
+    elif current_tab == 1:
         figure = window.figure2
         name = "comparison_chart"
+    elif current_tab == 2:
+        figure = window.figure3
+        name = "interaction_chart"
+    elif current_tab == 3:
+        figure = window.figure4
+        name = "heatmap_chart"
+    else:
+        figure = window.figure1
+        name = "chart"
     
     # Диалог сохранения файла
     file_path, _ = QFileDialog.getSaveFileName(
@@ -225,58 +311,3 @@ def export_chart(window):
             window.statusLabel.setText(f"График сохранен: {file_path}")
         except Exception as e:
             window.show_error_message(f"Ошибка при сохранении графика: {str(e)}")
-
-def create_heatmap(data):
-    """
-    Создает тепловую карту корреляции между урожайностью, сортами и удобрениями.
-    
-    Args:
-        data (DataFrame): Данные с колонками 'Сорт', 'Удобрение', 'Урожайность'
-        
-    Returns:
-        Figure: Объект Figure с тепловой картой
-    """
-    try:
-        # Создание нового объекта Figure
-        fig = Figure(figsize=(8, 6), dpi=100)
-        ax = fig.add_subplot(111)
-        
-        # Создание сводной таблицы средней урожайности
-        pivot_table = data.pivot_table(
-            index='Сорт', 
-            columns='Удобрение', 
-            values='Урожайность',
-            aggfunc='mean'
-        )
-        
-        # Построение тепловой карты
-        im = ax.imshow(pivot_table, cmap='YlGnBu')
-        
-        # Настройка осей
-        ax.set_xticks(np.arange(len(pivot_table.columns)))
-        ax.set_yticks(np.arange(len(pivot_table.index)))
-        ax.set_xticklabels(pivot_table.columns)
-        ax.set_yticklabels(pivot_table.index)
-        
-        # Поворот меток по оси X для лучшей читаемости
-        plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-        
-        # Добавление значений в ячейки
-        for i in range(len(pivot_table.index)):
-            for j in range(len(pivot_table.columns)):
-                value = pivot_table.iloc[i, j]
-                ax.text(j, i, f"{value:.2f}", ha="center", va="center", 
-                       color="black" if value > pivot_table.values.mean() else "white")
-        
-        # Добавление цветовой шкалы
-        cbar = fig.colorbar(im, ax=ax)
-        cbar.set_label('Средняя урожайность')
-        
-        ax.set_title('Тепловая карта урожайности: Сорт × Удобрение', fontsize=14, fontweight='bold')
-        fig.tight_layout()
-        
-        return fig
-    
-    except Exception as e:
-        print(f"Ошибка при создании тепловой карты: {str(e)}")
-        return None
