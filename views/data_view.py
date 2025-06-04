@@ -22,6 +22,68 @@ def setup_data_page(window):
         if not file_path:
             return
         
+        def validate_data_quality(data):
+            """Проверяет качество загруженных данных"""
+            errors = []
+            
+            # Проверка на пустые данные
+            if data.empty:
+                errors.append("Файл не содержит данных")
+                return errors
+            
+            # Проверка на минимальное количество строк
+            if len(data) < 3:
+                errors.append("Недостаточно данных для анализа (минимум 3 строки)")
+            
+            # Проверка колонки 'Сорт' на некорректные символы и пустые значения
+            if 'Сорт' in data.columns:
+                # Проверка на пустые значения
+                if data['Сорт'].isna().any() or (data['Сорт'] == '').any():
+                    errors.append("Колонка 'Сорт' содержит пустые значения")
+                
+                # Проверка на недопустимые символы (только буквы, цифры, пробелы, дефисы)
+                invalid_chars = data['Сорт'].astype(str).str.contains(r'[^а-яА-Яa-zA-Z0-9\s\-]', na=False)
+                if invalid_chars.any():
+                    errors.append("Колонка 'Сорт' содержит недопустимые символы")
+            
+            # Проверка колонки 'Удобрение' на некорректные символы и пустые значения
+            if 'Удобрение' in data.columns:
+                # Проверка на пустые значения
+                if data['Удобрение'].isna().any() or (data['Удобрение'] == '').any():
+                    errors.append("Колонка 'Удобрение' содержит пустые значения")
+                
+                # Проверка на недопустимые символы
+                invalid_chars = data['Удобрение'].astype(str).str.contains(r'[^а-яА-Яa-zA-Z0-9\s\-]', na=False)
+                if invalid_chars.any():
+                    errors.append("Колонка 'Удобрение' содержит недопустимые символы")
+            
+            # Проверка колонки 'Урожайность' на некорректные значения
+            if 'Урожайность' in data.columns:
+                # Проверка на пустые значения
+                if data['Урожайность'].isna().any():
+                    errors.append("Колонка 'Урожайность' содержит пустые значения")
+                
+                # Попытка преобразования в числовой формат
+                numeric_data = pd.to_numeric(data['Урожайность'], errors='coerce')
+                non_numeric_count = numeric_data.isna().sum()
+                
+                if non_numeric_count > 0:
+                    errors.append(f"Колонка 'Урожайность' содержит {non_numeric_count} нечисловых значений")
+                
+                # Проверка на отрицательные значения
+                if not numeric_data.isna().all():
+                    negative_count = (numeric_data < 0).sum()
+                    if negative_count > 0:
+                        errors.append(f"Колонка 'Урожайность' содержит {negative_count} отрицательных значений")
+                
+                # Проверка на экстремально большие значения (больше 1000)
+                if not numeric_data.isna().all():
+                    extreme_count = (numeric_data > 1000).sum()
+                    if extreme_count > 0:
+                        errors.append(f"Колонка 'Урожайность' содержит {extreme_count} экстремально больших значений (>1000)")
+            
+            return errors
+        
         try:
             # Определение типа файла по расширению
             if file_path.lower().endswith(('.xlsx', '.xls')):
@@ -35,6 +97,14 @@ def setup_data_page(window):
                         window.data = pd.read_csv(file_path, sep=';')
                     except:
                         window.data = pd.read_csv(file_path, sep='\t')
+            
+            # Валидация качества данных
+            validation_errors = validate_data_quality(window.data)
+            if validation_errors:
+                error_message = "Обнаружены ошибки в данных:\n\n" + "\n".join([f"• {error}" for error in validation_errors])
+                error_message += "\n\nПожалуйста, исправьте данные и попробуйте снова."
+                window.show_error_message(error_message)
+                return
             
             # Проверка наличия необходимых колонок
             required_columns = ['Сорт', 'Удобрение', 'Урожайность']
@@ -66,14 +136,31 @@ def setup_data_page(window):
                     return
             
             # Преобразование колонки 'Урожайность' в числовой формат
+            original_data = window.data['Урожайность'].copy()
             window.data['Урожайность'] = pd.to_numeric(window.data['Урожайность'], errors='coerce')
-            
-            # Проверка на пропущенные значения
-            if window.data['Урожайность'].isna().any():
-                window.show_error_message("В колонке 'Урожайность' обнаружены нечисловые значения, которые были заменены на NaN.")
+
+            # Детальная проверка на пропущенные значения
+            nan_count = window.data['Урожайность'].isna().sum()
+            if nan_count > 0:
+                # Показываем какие именно значения были некорректными
+                invalid_indices = window.data['Урожайность'].isna()
+                invalid_values = original_data[invalid_indices].unique()
+                
+                error_message = f"В колонке 'Урожайность' обнаружено {nan_count} некорректных значений:\n"
+                error_message += f"Некорректные значения: {', '.join(map(str, invalid_values[:10]))}"
+                if len(invalid_values) > 10:
+                    error_message += f" и еще {len(invalid_values) - 10}..."
+                error_message += "\n\nЭти значения будут заменены на среднее значение."
+                
+                window.show_error_message(error_message)
                 
                 # Заполнение пропущенных значений средним
-                window.data['Урожайность'].fillna(window.data['Урожайность'].mean(), inplace=True)
+                mean_value = window.data['Урожайность'].mean()
+                if pd.isna(mean_value):
+                    window.show_error_message("Невозможно рассчитать среднее значение. Все данные урожайности некорректны.")
+                    return
+                
+                window.data['Урожайность'].fillna(mean_value, inplace=True)
             
             # Отображение данных в таблице
             model = QStandardItemModel()
