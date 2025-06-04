@@ -66,19 +66,12 @@ pip install PyQt6 pandas numpy matplotlib seaborn statsmodels scipy
 
 ```shellscript
 git clone https://github.com/sshyta/FertYieldExplorer.git
-cd agricultural-analysis
+cd FertYieldExplorer
 ```
 
 ### 3. Запуск приложения
 
 ```shellscript
-python main.py
-```
-
-### Альтернативная установка через requirements.txt
-
-```shellscript
-pip install -r requirements.txt
 python main.py
 ```
 
@@ -226,10 +219,7 @@ FERTYIELDEXPLORER/
 2. **Ящик с усами** - распределение по удобрениям
 3. **Точечная** - все точки данных
 
-
-
 3. Отметьте **Show Trend** для отображения средней линии
-
 
 #### Графики сравнения
 
@@ -239,29 +229,20 @@ FERTYIELDEXPLORER/
 1. **По сортам** - сравнение сортов для каждого удобрения
 2. **По удобрениям** - сравнение удобрений для каждого сорта
 
-
-
-
-
 #### Дополнительные графики
 
 - **Взаимодействие** - график взаимодействия факторов
 - **Тепловая карта** - визуализация средних значений
-
-
-### Экспорт результатов
 
 #### Экспорт данных
 
 - Кнопка **Export Results** на вкладке Data
 - Поддерживаемые форматы: CSV, Excel
 
-
 #### Экспорт результатов анализа
 
 - Кнопка **Экспорт результатов** на вкладке Analysis
 - Формат: TXT файл с результатами
-
 
 #### Экспорт графиков
 
@@ -461,7 +442,7 @@ anova_result = {
 **Решение:**
 
 ```shellscript
-pip install PyQt6 pandas numpy matplotlib seaborn statsmodels scipy
+pip install PyQt6 PySide6 pandas numpy matplotlib seaborn statsmodels scipy
 ```
 
 #### 2. Ошибка загрузки данных
@@ -520,8 +501,3 @@ python main.py
 - Максимальное количество строк: 100,000
 - Поддерживаются только числовые значения урожайности
 - Требуется минимум 3 наблюдения для статистического анализа
-
-
----
-
-**Версия документации:** 1.0**Дата обновления:** Декабрь 2024**Совместимость:** Python 3.8+, PyQt6
