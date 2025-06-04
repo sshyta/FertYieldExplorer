@@ -65,7 +65,7 @@ pip install PyQt6 pandas numpy matplotlib seaborn statsmodels scipy
 ### 2. Клонирование проекта
 
 ```shellscript
-git clone <repository-url>
+git clone https://github.com/sshyta/FertYieldExplorer.git
 cd agricultural-analysis
 ```
 
