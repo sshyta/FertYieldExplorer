@@ -45,21 +45,17 @@ class Ui_MainWindow(object):
         icon.addFile(u":/newPrefix/icons/logo.webp", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.toolButton.setIcon(icon)
         self.toolButton.setIconSize(QSize(150, 150))
-        self.layoutWidget = QWidget(self.HomePage)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(0, 360, 520, 194))
-        self.horizontalLayout_2 = QHBoxLayout(self.layoutWidget)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.textEdit = QTextEdit(self.layoutWidget)
+        
+        # Изменяем расположение и размеры текстовых блоков
+        # Заголовок приложения - сверху (увеличиваем высоту)
+        self.textEdit = QTextEdit(self.HomePage)
         self.textEdit.setObjectName(u"textEdit")
-
-        self.horizontalLayout_2.addWidget(self.textEdit)
-
-        self.textEdit_2 = QTextEdit(self.layoutWidget)
+        self.textEdit.setGeometry(QRect(0, 40, 720, 180))  # Увеличиваем высоту с 120 до 180
+        
+        # Информация об авторах - снизу (увеличиваем высоту)
+        self.textEdit_2 = QTextEdit(self.HomePage)
         self.textEdit_2.setObjectName(u"textEdit_2")
-
-        self.horizontalLayout_2.addWidget(self.textEdit_2)
+        self.textEdit_2.setGeometry(QRect(0, 400, 520, 160))  # Увеличиваем высоту с 120 до 160 и поднимаем выше
 
         self.stackedWidget.addWidget(self.HomePage)
         self.DataPage = QWidget()
@@ -268,7 +264,7 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Noto Sans'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f \u0443\u0440\u043e\u0436\u0430\u0439\u043d\u043e\u0441\u0442\u0438 \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0445 \u0441\u043e\u0440\u0442\u043e\u0432 \u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0445\u043e\u0437\u044f\u0439\u0441"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt;\">\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f \u0443\u0440\u043e\u0436\u0430\u0439\u043d\u043e\u0441\u0442\u0438 \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0445 \u0441\u043e\u0440\u0442\u043e\u0432 \u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0445\u043e\u0437\u044f\u0439\u0441"
                         "\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u043a\u0443\u043b\u044c\u0442\u0443\u0440 \u043f\u0440\u0438 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0438 \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0445 \u0442\u0438\u043f\u043e\u0432 \u0443\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u0439</span></p></body></html>", None))
         self.textEdit_2.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -276,7 +272,7 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Noto Sans'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:'Noto Sans'; font-size:18pt; font-weight:600; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u0412\u044b\u043f\u043e\u043b\u043d\u0438\u043b\u0438 \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u044b \u0433\u0440\u0443\u043f\u043f\u044b \u0446\u0438\u0441-33<br />\u0421\u043c\u0438\u0440\u043d\u043e\u0432 \u041c.\u0410.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u0411\u043b\u0438\u043d\u043e\u0432 \u0418.\u0410"
                         ".</p>\n"
@@ -310,4 +306,3 @@ class Ui_MainWindow(object):
         self.analysisBtn.setText(QCoreApplication.translate("MainWindow", u"Анализ", None))
         self.chartsBtn.setText(QCoreApplication.translate("MainWindow", u"Графики", None))
     # retranslateUi
-
