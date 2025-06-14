@@ -1,3 +1,5 @@
+from PyQt6.QtCore import QSize
+from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QMessageBox, QPushButton, QVBoxLayout, QWidget
 from ui.ui_main import Ui_MainWindow
 from views.data_view import setup_data_page
@@ -29,16 +31,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def _add_ui_elements(self):
         """Добавляет дополнительные элементы интерфейса"""
-        # Добавление кнопки для создания тестовых данных на странице данных
+
+        # Кнопка "Создать тестовые данные" добавляется в layout с другими
         self.SampleDataBtn = QPushButton("Создать тестовые данные", self.DataPage)
-        self.SampleDataBtn.setGeometry(460, 20, 200, 30)
-        
-        # Удалено создание кнопки exportResultsBtn, так как она создается в analysis_view.py
-        
-        # Обновление заголовков вкладок на странице графиков
+        self.SampleDataBtn.setMinimumSize(QSize(100, 20))
+        self.SampleDataBtn.setStyleSheet("font-size: 12pt;")
+
+        # Добавляем кнопку в тот же horizontalLayout_3, где Load, Save, Export
+        self.horizontalLayout_3.insertWidget(2, self.SampleDataBtn)  # Вставим в начало
+        # Или в конец: self.horizontalLayout_3.addWidget(self.SampleDataBtn)
+        icon1 = QIcon()
+        icon1.addFile(u":/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg", QSize(),
+                      QIcon.Mode.Normal, QIcon.State.Off)
+        self.SampleDataBtn.setIcon(icon1)
+        self.SampleDataBtn.setIconSize(QSize(20, 20))
+        # Обновление заголовков вкладок
         self.chartsTabs.setTabText(0, "Основной график")
         self.chartsTabs.setTabText(1, "График сравнения")
-
     def show_error_message(self, text):
         """Отображает сообщение об ошибке"""
         QMessageBox.critical(self, "Ошибка", text)

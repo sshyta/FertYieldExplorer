@@ -16,14 +16,15 @@ from PyQt6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PyQt6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGroupBox,
-    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
-    QPushButton, QRadioButton, QSizePolicy, QStackedWidget,
-    QTabWidget, QTableView, QTextEdit, QToolButton,
-    QVBoxLayout, QWidget)
+                             QHBoxLayout, QHeaderView, QLabel, QMainWindow,
+                             QPushButton, QRadioButton, QSizePolicy, QStackedWidget,
+                             QTabWidget, QTableView, QTextEdit, QToolButton,
+                             QVBoxLayout, QWidget, QSpacerItem)
 
 import ui.res_rc
 
 class Ui_MainWindow(object):
+
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -68,11 +69,13 @@ class Ui_MainWindow(object):
         self.DataTable.setGeometry(QRect(10, 60, 921, 491))
         self.layoutWidget1 = QWidget(self.DataPage)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(10, 20, 436, 31))
+        self.layoutWidget1.setGeometry(QRect(10, 20, 900, 50))
         self.horizontalLayout_3 = QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.LoadBtn = QPushButton(self.layoutWidget1)
+        self.LoadBtn.setMinimumSize(QSize(100, 20))
+        self.LoadBtn.setStyleSheet("font-size: 12pt;")
         self.LoadBtn.setObjectName(u"LoadBtn")
         icon1 = QIcon()
         icon1.addFile(u":/newPrefix/icons/upload_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -87,6 +90,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.statusLabel)
 
         self.SaveBtn = QPushButton(self.layoutWidget1)
+        self.SaveBtn.setMinimumSize(QSize(100, 20))
+        self.SaveBtn.setStyleSheet("font-size: 12pt;")
         self.SaveBtn.setObjectName(u"SaveBtn")
         icon2 = QIcon()
         icon2.addFile(u":/newPrefix/icons/download_done_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -96,6 +101,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.SaveBtn)
 
         self.ExportBtn = QPushButton(self.layoutWidget1)
+        self.ExportBtn.setMinimumSize(QSize(100, 20))
+        self.ExportBtn.setStyleSheet("font-size: 12pt;")
         self.ExportBtn.setObjectName(u"ExportBtn")
         icon3 = QIcon()
         icon3.addFile(u":/newPrefix/icons/download_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -198,11 +205,13 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.ChartsPage)
         self.layoutWidget3 = QWidget(self.centralwidget)
         self.layoutWidget3.setObjectName(u"layoutWidget3")
-        self.layoutWidget3.setGeometry(QRect(40, 40, 345, 32))
+        self.layoutWidget3.setGeometry(QRect(40, 40, 900, 40))
         self.horizontalLayout = QHBoxLayout(self.layoutWidget3)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(20)
         self.HomeBtn = QPushButton(self.layoutWidget3)
+        self.HomeBtn.setMinimumSize(QSize(120, 20))
         self.HomeBtn.setObjectName(u"HomeBtn")
         icon4 = QIcon()
         icon4.addFile(u":/newPrefix/icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -273,10 +282,10 @@ class Ui_MainWindow(object):
                         ".</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u041b\u0435\u0448\u0438\u043d\u0430 \u0414.\u0410.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.LoadBtn.setText(QCoreApplication.translate("MainWindow", u"Load Data", None))
+        self.LoadBtn.setText(QCoreApplication.translate("MainWindow", u"Загрузка данных", None))
         self.statusLabel.setText(QCoreApplication.translate("MainWindow", u"\u0424\u0430\u0439\u043b \u043d\u0435 \u0432\u044b\u0431\u0440\u0430\u043d", None))
-        self.SaveBtn.setText(QCoreApplication.translate("MainWindow", u"Save Data", None))
-        self.ExportBtn.setText(QCoreApplication.translate("MainWindow", u"Export Results", None))
+        self.SaveBtn.setText(QCoreApplication.translate("MainWindow", u"Сохранение данных", None))
+        self.ExportBtn.setText(QCoreApplication.translate("MainWindow", u"Выгрузить результаты (txt)", None))
         self.analysisGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0430\u043d\u0430\u043b\u0438\u0437\u0430", None))
         self.runAnalysisBtn.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u0430\u043d\u0430\u043b\u0438\u0437", None))
         self.testTypeCombo.setItemText(0, QCoreApplication.translate("MainWindow", u"ANOVA", None))
@@ -285,20 +294,20 @@ class Ui_MainWindow(object):
         self.cropFactorCheck.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0440\u0442 \u043a\u0443\u043b\u044c\u0442\u0443\u0440\u044b", None))
         self.fertilizerCheck.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0443\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u044f", None))
         self.interactionCheck.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435", None))
-        self.chartTypeCombo.setItemText(0, QCoreApplication.translate("MainWindow", u"columnar", None))
-        self.chartTypeCombo.setItemText(1, QCoreApplication.translate("MainWindow", u"Spot", None))
-        self.chartTypeCombo.setItemText(2, QCoreApplication.translate("MainWindow", u"linear", None))
+        self.chartTypeCombo.setItemText(0, QCoreApplication.translate("MainWindow", u"Столбчатая", None))
+        self.chartTypeCombo.setItemText(1, QCoreApplication.translate("MainWindow", u"Место", None))
+        self.chartTypeCombo.setItemText(2, QCoreApplication.translate("MainWindow", u"Линейная", None))
 
-        self.showTrendCheck.setText(QCoreApplication.translate("MainWindow", u"Show Trend", None))
-        self.exportChartBtn.setText(QCoreApplication.translate("MainWindow", u"Export graph", None))
+        self.showTrendCheck.setText(QCoreApplication.translate("MainWindow", u"Показать тренд", None))
+        self.exportChartBtn.setText(QCoreApplication.translate("MainWindow", u"Экспорт графика", None))
         self.chartsTabs.setTabText(self.chartsTabs.indexOf(self.mainChartTab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u043f\u0438\u0440\u043e\u0432\u043a\u0430", None))
         self.radioButton.setText(QCoreApplication.translate("MainWindow", u"\u043f\u043e \u0441\u043e\u0440\u0442\u0430\u043c", None))
         self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"\u043f\u043e \u0443\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u044f\u043c", None))
         self.chartsTabs.setTabText(self.chartsTabs.indexOf(self.comparisonTab), QCoreApplication.translate("MainWindow", u"Tab 2", None))
-        self.HomeBtn.setText(QCoreApplication.translate("MainWindow", u"Home", None))
-        self.dataBtn.setText(QCoreApplication.translate("MainWindow", u"data", None))
-        self.analysisBtn.setText(QCoreApplication.translate("MainWindow", u"analysis", None))
-        self.chartsBtn.setText(QCoreApplication.translate("MainWindow", u"charts", None))
+        self.HomeBtn.setText(QCoreApplication.translate("MainWindow", u"Главная страница", None))
+        self.dataBtn.setText(QCoreApplication.translate("MainWindow", u"Данные", None))
+        self.analysisBtn.setText(QCoreApplication.translate("MainWindow", u"Анализ", None))
+        self.chartsBtn.setText(QCoreApplication.translate("MainWindow", u"Графики", None))
     # retranslateUi
 
