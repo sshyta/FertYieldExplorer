@@ -31,45 +31,43 @@ def setup_charts_page(window):
 
     # Обновление списка типов графиков
     window.chartTypeCombo.clear()
-    window.chartTypeCombo.addItems(["Столбчатая", "Ящик с усами", "Точечная"])
+    window.chartTypeCombo.addItems(["Столбчатая", "Точечная"])
 
-    # Добавление новых вкладок для дополнительных графиков
-    if window.chartsTabs.count() == 2:  # Если есть только две стандартные вкладки
-        # Добавление вкладки для графика взаимодействия
+    if window.chartsTabs.count() == 2:
+        # === ВЗАИМОДЕЙСТВИЕ ===
         interaction_tab = QtWidgets.QWidget()
         window.chartsTabs.addTab(interaction_tab, "Взаимодействие")
-        
-        # Контейнер для графика взаимодействия
-        window.interactionPlotContainer = QtWidgets.QWidget(interaction_tab)
-        window.interactionPlotContainer.setGeometry(QRect(20, 20, 800, 400))
-        
-        # Настройка графика взаимодействия
-        window.figure3 = Figure(figsize=(8, 4), dpi=100)
+
+        # Layout для всей вкладки
+        interaction_layout = QtWidgets.QVBoxLayout(interaction_tab)
+
+        # Контейнер и график
+        window.figure3 = Figure(figsize=(10, 5), dpi=100)
         window.canvas3 = FigureCanvas(window.figure3)
-        layout3 = QtWidgets.QVBoxLayout(window.interactionPlotContainer)
-        layout3.addWidget(window.canvas3)
-        
-        # Кнопка для обновления графика взаимодействия
-        window.updateInteractionBtn = QtWidgets.QPushButton("Обновить график", interaction_tab)
-        window.updateInteractionBtn.setGeometry(QRect(20, 430, 150, 30))
-        
-        # Добавление вкладки для тепловой карты
+        interaction_layout.addWidget(window.canvas3)
+
+        # Кнопка обновления
+        window.updateInteractionBtn = QtWidgets.QPushButton("Обновить график")
+        interaction_layout.addWidget(window.updateInteractionBtn)
+
+        window.exportInteractionBtn = QtWidgets.QPushButton("Экспорт графика")
+        interaction_layout.addWidget(window.exportInteractionBtn)
+
+        # === ТЕПЛОВАЯ КАРТА ===
         heatmap_tab = QtWidgets.QWidget()
         window.chartsTabs.addTab(heatmap_tab, "Тепловая карта")
-        
-        # Контейнер для тепловой карты
-        window.heatmapContainer = QtWidgets.QWidget(heatmap_tab)
-        window.heatmapContainer.setGeometry(QRect(20, 20, 800, 400))
-        
-        # Настройка тепловой карты
-        window.figure4 = Figure(figsize=(8, 4), dpi=100)
+
+        heatmap_layout = QtWidgets.QVBoxLayout(heatmap_tab)
+
+        window.figure4 = Figure(figsize=(10, 5), dpi=100)
         window.canvas4 = FigureCanvas(window.figure4)
-        layout4 = QtWidgets.QVBoxLayout(window.heatmapContainer)
-        layout4.addWidget(window.canvas4)
-        
-        # Кнопка для обновления тепловой карты
-        window.updateHeatmapBtn = QtWidgets.QPushButton("Обновить карту", heatmap_tab)
-        window.updateHeatmapBtn.setGeometry(QRect(20, 430, 150, 30))
+        heatmap_layout.addWidget(window.canvas4)
+
+        window.updateHeatmapBtn = QtWidgets.QPushButton("Обновить карту")
+        heatmap_layout.addWidget(window.updateHeatmapBtn)
+
+        window.exportHeatmapBtn = QtWidgets.QPushButton("Экспорт карты")
+        heatmap_layout.addWidget(window.exportHeatmapBtn)
 
     def update_interaction():
         """Обновляет график взаимодействия"""
