@@ -1,4 +1,7 @@
+import re
+
 import pandas as pd
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QFileDialog, QAbstractItemView, QMessageBox
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
 import numpy as np
@@ -10,6 +13,46 @@ def setup_data_page(window):
     Args:
         window: Главное окно приложения
     """
+
+    def validate_table_data(model):
+        """Проверяет данные таблицы перед сохранением"""
+        errors = []
+        error_rows = set()
+
+        for row in range(model.rowCount()):
+            sort_val = model.item(row, 0).text().strip() if model.item(row, 0) else ""
+            fert_val = model.item(row, 1).text().strip() if model.item(row, 1) else ""
+            yield_val = model.item(row, 2).text().strip() if model.item(row, 2) else ""
+
+            row_errors = []
+
+            # Проверка Сорт
+            if not sort_val:
+                row_errors.append("пустое значение в 'Сорт'")
+            elif not re.match(r'^[а-яА-Яa-zA-Z0-9\s\-]+$', sort_val):
+                row_errors.append("некорректные символы в 'Сорт'")
+
+            # Проверка Удобрение
+            if not fert_val:
+                row_errors.append("пустое значение в 'Удобрение'")
+            elif not re.match(r'^[а-яА-Яa-zA-Z0-9\s\-]+$', fert_val):
+                row_errors.append("некорректные символы в 'Удобрение'")
+
+            # Проверка Урожайность
+            try:
+                yield_num = float(yield_val)
+                if yield_num < 0:
+                    row_errors.append("отрицательная 'Урожайность'")
+                if yield_num > 1000:
+                    row_errors.append("слишком большая 'Урожайность'")
+            except ValueError:
+                row_errors.append("нечисловое значение в 'Урожайность'")
+
+            if row_errors:
+                error_rows.add(row)
+                errors.append(f"Строка {row + 1}: " + "; ".join(row_errors))
+
+        return errors, error_rows
     def load_data():
         """Загружает данные из CSV-файла"""
         file_path, _ = QFileDialog.getOpenFileName(
@@ -180,12 +223,36 @@ def setup_data_page(window):
             window.show_error_message(f"Ошибка загрузки: {str(e)}")
 
     def save_data():
-        """Сохраняет изменения в данных из таблицы"""
+        """Сохраняет изменения в данных из таблицы с валидацией"""
         model = window.DataTable.model()
         if model is None:
             window.show_error_message("Нет данных для сохранения.")
             return
 
+        # Валидация данных
+        validation_errors, error_rows = validate_table_data(model)
+
+        # Удаляем старую подсветку
+        for row in range(model.rowCount()):
+            for col in range(model.columnCount()):
+                item = model.item(row, col)
+                if item:
+                    item.setBackground(window.palette().base())
+
+        if validation_errors:
+            # Подсвечиваем строки с ошибками
+            for row in error_rows:
+                for col in range(model.columnCount()):
+                    item = model.item(row, col)
+                    if item:
+                        item.setBackground(Qt.GlobalColor.red)
+
+            # Показываем окно с ошибками
+            error_text = "Обнаружены ошибки при сохранении:\n\n" + "\n".join(validation_errors)
+            QMessageBox.warning(window, "Ошибки в данных", error_text)
+            return
+
+        # Сохранение данных, если ошибок нет
         rows = model.rowCount()
         cols = model.columnCount()
         data = []
@@ -199,11 +266,11 @@ def setup_data_page(window):
 
         columns = [model.horizontalHeaderItem(i).text() for i in range(cols)]
         window.data = pd.DataFrame(data, columns=columns)
-        
-        # Преобразование колонки 'Урожайность' в числовой формат
+
+        # Преобразуем 'Урожайность' в числовой формат
         if 'Урожайность' in window.data.columns:
             window.data['Урожайность'] = pd.to_numeric(window.data['Урожайность'], errors='coerce')
-        
+
         window.statusLabel.setText("Данные обновлены в памяти.")
 
     def export_data():
