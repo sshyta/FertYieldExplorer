@@ -1,5 +1,7 @@
 from PyQt6 import QtWidgets
-from PyQt6.QtCore import QRect
+from PyQt6.QtCore import QSize
+from PyQt6.uic.properties import QtCore
+
 from logic.charts import (
     update_main_chart, 
     update_comparison_chart, 
@@ -26,8 +28,15 @@ def setup_charts_page(window):
     # Настройка графика сравнения
     window.figure2 = Figure(figsize=(5, 4), dpi=100)
     window.canvas2 = FigureCanvas(window.figure2)
-    layout2 = window.comparisonPlotContainer.layout() or QtWidgets.QVBoxLayout(window.comparisonPlotContainer)
+    layout2 = window.comparisonPlotContainer.layout()
+    if layout2 is None:
+        layout2 = QtWidgets.QVBoxLayout(window.comparisonPlotContainer)
+        window.comparisonPlotContainer.setLayout(layout2)
     layout2.addWidget(window.canvas2)
+
+
+    # Подключение обработчика
+    window.exportComparisonChartBtn.clicked.connect(lambda: export_chart(window))
 
     # Обновление списка типов графиков
     window.chartTypeCombo.clear()
@@ -52,6 +61,7 @@ def setup_charts_page(window):
 
         window.exportInteractionBtn = QtWidgets.QPushButton("Экспорт графика")
         interaction_layout.addWidget(window.exportInteractionBtn)
+        window.exportInteractionBtn.clicked.connect(lambda: export_chart(window))  # ✅ ДОБАВЬ ЭТО
 
         # === ТЕПЛОВАЯ КАРТА ===
         heatmap_tab = QtWidgets.QWidget()
@@ -68,6 +78,7 @@ def setup_charts_page(window):
 
         window.exportHeatmapBtn = QtWidgets.QPushButton("Экспорт карты")
         heatmap_layout.addWidget(window.exportHeatmapBtn)
+        window.exportHeatmapBtn.clicked.connect(lambda: export_chart(window))  # ✅ ДОБАВЬ ЭТО
 
     def update_interaction():
         """Обновляет график взаимодействия"""

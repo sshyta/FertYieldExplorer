@@ -441,6 +441,15 @@ class Ui_MainWindow(object):
         # График сравнения
         self.comparisonTab = QWidget()
         self.comparisonTab.setObjectName(u"comparisonTab")
+        # Кнопка экспорта графика сравнения
+        self.exportComparisonChartBtn = QPushButton(self.comparisonTab)
+        self.exportComparisonChartBtn.setObjectName(u"exportComparisonChartBtn")
+        self.exportComparisonChartBtn.setText("Экспорт графика")
+        self.exportComparisonChartBtn.setIcon(icon3)
+        self.exportComparisonChartBtn.setIconSize(QSize(24, 24))
+        self.exportComparisonChartBtn.setMinimumHeight(40)
+        self.exportComparisonChartBtn.setGeometry(QRect(30, 270, 280, 40))  # Под groupBox (220px высота + 10px отступ)
+
         
         # Увеличиваем группу настроек
         self.groupBox = QGroupBox(self.comparisonTab)
