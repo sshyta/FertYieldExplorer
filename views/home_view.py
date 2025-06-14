@@ -77,25 +77,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         msg.setWindowTitle("Ошибка")
         msg.setText(text)
         msg.setStyleSheet("""
-            QMessageBox {
-                background-color: #ecf0f1;
-                color: #2c3e50;
-                font-size: 12pt;
-            }
-            QMessageBox QPushButton {
-                background: #e74c3c;
-                border: 2px solid #c0392b;
-                border-radius: 6px;
-                color: white;
-                font-size: 11pt;
-                font-weight: 600;
-                padding: 8px 16px;
-                min-width: 80px;
-            }
-            QMessageBox QPushButton:hover {
-                background: #ec7063;
-            }
-        """)
+    QMessageBox {
+        background-color: #ecf0f1;
+        color: #2c3e50;
+        font-size: 12pt;
+    }
+    QMessageBox QLabel {
+        color: #2c3e50;
+        font-size: 12pt;
+        font-weight: 500;
+    }
+    QMessageBox QPushButton {
+        background: #e74c3c;
+        border: 2px solid #c0392b;
+        border-radius: 6px;
+        color: white;
+        font-size: 11pt;
+        font-weight: 600;
+        padding: 8px 16px;
+        min-width: 80px;
+    }
+    QMessageBox QPushButton:hover {
+        background: #ec7063;
+    }
+""")
         msg.exec()
 
     def show_info_message(self, text):
@@ -105,23 +110,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         msg.setWindowTitle("Информация")
         msg.setText(text)
         msg.setStyleSheet("""
-            QMessageBox {
-                background-color: #ecf0f1;
-                color: #2c3e50;
-                font-size: 12pt;
-            }
-            QMessageBox QPushButton {
-                background: #3498db;
-                border: 2px solid #2980b9;
-                border-radius: 6px;
-                color: white;
-                font-size: 11pt;
-                font-weight: 600;
-                padding: 8px 16px;
-                min-width: 80px;
-            }
-            QMessageBox QPushButton:hover {
-                background: #5dade2;
-            }
-        """)
+    QMessageBox {
+        background-color: #ecf0f1;
+        color: #2c3e50;
+        font-size: 12pt;
+    }
+    QMessageBox QLabel {
+        color: #2c3e50;
+        font-size: 12pt;
+        font-weight: 500;
+    }
+    QMessageBox QPushButton {
+        background: #3498db;
+        border: 2px solid #2980b9;
+        border-radius: 6px;
+        color: white;
+        font-size: 11pt;
+        font-weight: 600;
+        padding: 8px 16px;
+        min-width: 80px;
+    }
+    QMessageBox QPushButton:hover {
+        background: #5dade2;
+    }
+""")
         msg.exec()
