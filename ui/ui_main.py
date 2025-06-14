@@ -197,8 +197,10 @@ class Ui_MainWindow(object):
                 margin-right: 2px;
                 border-top-left-radius: 8px;
                 border-top-right-radius: 8px;
-                font-size: 12pt;
+                font-size: 14pt;
                 font-weight: 500;
+                min-width: 200px;
+                height: 20px;
             }
             
             QTabBar::tab:selected {
