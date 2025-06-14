@@ -93,23 +93,54 @@ class Ui_MainWindow(object):
                 font-size: 12pt;
                 color: #2c3e50;
                 min-height: 20px;
+                selection-background-color: white;
             }
-            
+
             QComboBox:hover {
                 border: 2px solid #3498db;
             }
-            
+
             QComboBox::drop-down {
                 border: none;
                 width: 30px;
+                background: transparent;
             }
-            
+
             QComboBox::down-arrow {
                 image: none;
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;
                 border-top: 8px solid #2c3e50;
                 margin-right: 10px;
+            }
+
+            QComboBox QAbstractItemView {
+                background: white;
+                border: 2px solid #bdc3c7;
+                border-radius: 6px;
+                selection-background-color: #e8f4fd;
+                selection-color: #2c3e50;
+                color: #2c3e50;
+                font-size: 12pt;
+                padding: 4px;
+            }
+
+            QComboBox QAbstractItemView::item {
+                background: white;
+                color: #2c3e50;
+                padding: 8px 12px;
+                border: none;
+                min-height: 20px;
+            }
+
+            QComboBox QAbstractItemView::item:selected {
+                background: #e8f4fd;
+                color: #2c3e50;
+            }
+
+            QComboBox QAbstractItemView::item:hover {
+                background: #d6eaf8;
+                color: #2c3e50;
             }
             
             QCheckBox {
